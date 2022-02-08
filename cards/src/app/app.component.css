@@ -1,0 +1,7 @@
+/* displays cards horizontally instead of vertically
+refers to the component it is in. In this case, its referring to app-root since we're referring to the app-root component */
+:host{
+    display:flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}

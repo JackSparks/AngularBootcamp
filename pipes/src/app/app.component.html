@@ -1,0 +1,85 @@
+<div class="container">
+  <h3>Payment Form</h3>
+
+  <div class="row">
+    <div class="form-group col">
+      <label>Payee Name</label>
+      <input class="form-control" #userInput (input)="onNameChange(userInput.value)" />
+    </div>
+
+    <div class="col">
+      <label><b>Name</b></label>
+      <div>
+        {{ name | titlecase}}
+      </div>
+    </div>
+  </div>
+
+
+  <div class="row">
+    <div class="form-group col">
+      <label>Payment Date</label>
+      <input type="date" class="form-control" #userInput2 (input)="onDateChange(userInput2.value)" />
+    </div>
+
+    <div class="col">
+      <label><b>Payment Date</b></label>
+      <div>
+        <!-- format as a date -->
+        {{ date | date}}
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="form-group col">
+      <label>Payment Amount</label>
+      <input class="form-control" #userInput3 (input)="onAmountChange(userInput3.value)" />
+    </div>
+
+    <div class="col">
+      <label><b>Payment Amount</b></label>
+      <div>
+        <!-- convert to the currency -->
+        {{ amount | currency: 'JPY' }}
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="form-group col">
+      <label>Height</label>
+      <input class="form-control" #userInput4 (input)="onHeightChange(userInput4.value)" />
+    </div>
+
+    <div class="col">
+      <label><b>Height</b></label>
+      <div>
+        <!-- Controls number of decimal places. 1.1-3 means at least 1 and at most 3. 
+          9.1-3 means print 9 digits to the left-->
+        {{ height | number: '1.1-3'}}
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="form-group col">
+      <label>Miles</label>
+      <input class="form-control" #userInput5 (input)="onMilesChange(userInput5.value)" />
+    </div>
+
+    <div class="col">
+      <label><b>Kilometres</b></label>
+      <div>
+        
+        <!-- uses custom pipe called 'convert'
+        can chain pipes together-->
+        
+        {{ miles | convert: 'km' | number: '1.0-2'}}
+      </div>
+    </div>
+  </div>
+
+</div>
+
+{{ car | json}}
