@@ -10,7 +10,7 @@
 
     <!-- If true, then active <li> is applied as a class-->
     
-    <ng-container *appTimes="images.length">
+    <ng-container *appTimes="images.length; let i = index">
         <li 
       class="page-item" 
       [appClass] = "{ active: i === currentPage }" 
