@@ -1,0 +1,4 @@
+/* if the div has nothing inside of it, then don't show anything. Ex. no added unwanted margins. */
+div.ui.icon.header:empty{
+    display: none;
+}
