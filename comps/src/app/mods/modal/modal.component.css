@@ -1,0 +1,13 @@
+/* look for any divs with the class of actions with nothing inside of it */
+.actions:empty{
+    display: none;
+}
+
+.actions-default{
+    display: none;
+}
+
+/* if there's a div with the class of actions and there is also a sibling div with the class of actions-default, then apply the display of block */
+.actions:empty + .actions-default{
+    display: block;
+}

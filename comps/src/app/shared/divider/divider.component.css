@@ -1,0 +1,5 @@
+/* ignores the first occurence and only looks at subsequent occurences */
+:hostnot(:first-of-type) { 
+    display: block;
+    margin-top: 20px;
+}
