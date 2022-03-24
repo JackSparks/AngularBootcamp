@@ -1,0 +1,28 @@
+<table class="table is-striped">
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Word Count</th>
+            <th>Snippet</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        <tr *ngFor="let page of pages">
+            <!-- wording comes from the wikipedia json object -->
+            <td>
+                <!-- target="_blank" makes it open links in a new tab -->
+                <!-- the link works due to the format of the json object returned from the link -->
+                <a target="_blank" [href]=" 'https://en.wikipedia.org?curid=' + page.pageid ">
+                    {{ page.title }}
+                </a>
+            </td>
+            <td>{{ page.wordcount }}</td>
+            <!-- <td>{{ page.snippet }}</td> -->
+
+            <!-- if this wasn't angular, this would open you up an xss attack
+            however angular uses an anglar escaper to protect -->
+            <td [innerHTML]="page.snippet"></td>
+        </tr>
+    </tbody>
+</table>

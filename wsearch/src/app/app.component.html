@@ -1,0 +1,7 @@
+<div class="container">
+
+    <!-- whenever the submitted event occures, run the code onTerm-->
+    <app-search-bar (submitted)="onTerm($event)"></app-search-bar>
+    <app-page-list *ngIf="pages.length" [pages]="pages"></app-page-list>
+
+</div>
