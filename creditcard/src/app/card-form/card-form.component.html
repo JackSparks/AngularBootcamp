@@ -1,0 +1,45 @@
+<div class="columns">
+
+    <div class="column">
+
+        <app-card [name]="cardForm.value.name">
+            [name]="cardForm.value.cardNumber">
+            [name]="cardForm.value.expiration">
+
+        </app-card>
+        <!-- <app-card [name]="cardForm.controls.name.value"></app-card>
+<app-card [name]="cardForm.get('name').value"></app-card> -->
+    </div>
+
+    <div class="column">
+
+        <form [formGroup]="cardForm">
+            <app-input label="Name" [control]="$any(cardForm.controls['name'])"></app-input>
+            <app-input label="Card Number" [control]="$any(cardForm.controls['cardNumber'])"></app-input>
+            <div class="columns">
+                <div class="column">
+                    <app-input label="Expiration (MM/YY)" [control]="$any(cardForm.controls['expiration'])"></app-input>
+                </div>
+                <div class="column">
+                    <app-input label="Security" [control]="$any(cardForm.controls['securityCode'])"></app-input>
+                </div>
+            </div>
+
+            <div class="buttons">
+                <button class="button is-primary" [disabled]="cardForm.invalid" type="submit">Submit</button>
+
+                <!-- The type="button" ensures that the form doesn't submit when the button is pressed -->
+                <button class="button is-warning" type="button" (click)="onResetClick()">
+                    Reset
+                </button>
+            </div>
+
+        </form>
+        <hr />
+        <!-- as you type inside the above input element, the following will populate -->
+        <div>Form Contents: {{ cardForm.value | json }}</div>
+        <div>Form is valid: {{ cardForm.valid }} </div>
+        <div>Errors around name: {{ cardForm.controls['name'].errors | json}}</div>
+
+    </div>
+</div>

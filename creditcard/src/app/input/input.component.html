@@ -1,0 +1,47 @@
+<div class="field">
+    <label class="label">{{ label }}</label>
+    <!-- tells angular to look at the control in the .ts file -->
+
+    <!-- Using masking from npmjs.com/package/ngx-mask 
+    
+        add this to the class input below
+
+
+    mask="(000)-000-0000"
+    
+    -->
+    <!-- If showErrors, then do the is-danger -->
+    <div class="control">
+        <input 
+        
+        class="input" 
+        [formControl]="control" 
+        [ngClass]="{ 'is-danger': showErrors()}"
+        />
+    </div>
+    <!-- If the errors div is not null, then show the next div -->
+    <ng-container *ngIf="showErrors()">
+        <!-- If the form has a required validator, then show the div error -->
+
+        <div *ngIf="control.errors.required">
+            Value is required.
+        </div>
+
+        <div class="help is-danger" *ngIf="control.errors.minLength">
+            Value you entered is {{ control.errors.minLength.actualLength }}
+            characters long, but it must be at least
+            {{ control.errors.minLength.requiredLength }}
+            characters
+        </div>
+        <div class="help is-danger" *ngIf="control.errors.maxLength">
+            Value you entered is
+            {{control.errors.maxLength.actualLength}}
+            characters long, but it cannot be longer than
+            {{ control.errors.maxlength.requiredLength }}
+            characters
+        </div>
+        <div class="help is-danger" *ngIf="control.errors.pattern">
+            Invalid format
+        </div>
+    </ng-container>
+</div>
